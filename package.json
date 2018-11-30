@@ -1,0 +1,25 @@
+{
+  "name": "hermes",
+  "version": "1.0.0",
+  "description": "Desktop client version of the Hermes Messenger",
+  "main": "main.js",
+  "dependencies": {},
+  "devDependencies": {
+    "electron": "^3.0.7",
+    "electron-packager": "^12.2.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-packager . HermesMessenger --out=dist --all --icon=icons/icon.ico --asar --overwrite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HermesMessenger/HermesDesktop.git"
+  },
+  "author": "CoderDojo Majadahonda",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HermesMessenger/Hermes/issues"
+  },
+  "homepage": "https://github.com/HermesMessenger/Hermes#readme"
+}
