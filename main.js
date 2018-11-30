@@ -28,7 +28,8 @@ app.on('ready', function () {
   mainWindow.loadURL('https://hermesmessenger.duckdns.org')
 
   mainWindow.on('closed', function () {
-    mainWindow = null
+    //mainWindow.close();
+    app.quit();
   });
 });
 
