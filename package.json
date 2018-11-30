@@ -6,17 +6,81 @@
   "dependencies": {},
   "devDependencies": {
     "electron": "^3.0.7",
-    "electron-packager": "^12.2.0"
+    "electron-builder": "^20.38.2"
   },
   "scripts": {
     "start": "electron .",
-    "build": "electron-packager . HermesMessenger --out=dist --all --icon=icons/icon.ico --asar --overwrite"
+
+    "build-win": "electron-builder --win",
+    "build-macos": "electron-builder --mac",
+    "build-linux": "electron-builder --linux",
+
+    "build-all": "electron-builder -wml",
+    "build-winlinux": "electron-builder -wl"
+  },
+  "build": {
+    "appId": "HermesMessenger.Hermes.Desktop",
+    "productName": "Hermes Messenger",
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "ia32",
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+      "category": "public.app-category.social-networking",
+      "target": "dmg"
+    },
+    "dmg": {
+      "icon": "build/icon.icns",
+      "title": "Hermes Messenger Installer",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220,
+          "type": "file",
+          "path": ""
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        {
+          "target": "AppImage",
+          "arch": [
+            "x64",
+            "ia32",
+            "armv7l",
+            "arm64"
+          ]
+        }
+      ]
+    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/HermesMessenger/HermesDesktop.git"
   },
-  "author": "CoderDojo Majadahonda",
+  "author": {
+    "name": "Hermes Messenger",
+    "email": "hermes@hermes.org"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/HermesMessenger/Hermes/issues"
