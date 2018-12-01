@@ -1,15 +1,19 @@
-const {app, BrowserWindow, session} = require('electron');
+const { app, BrowserWindow, session } = require('electron');
+const isOnline = require('is-online');
+const settings = require('electron-settings');
+const request = require('request');
+
+
 const lock = app.requestSingleInstanceLock();
-var appID = 'HermesMessenger.Hermes.Desktop';
-var mainWindow;
-var HermesURL = 'https://hermesmessenger.duckdns.org';
-// var HermesURL = 'http://localhost:8080'; // Uncomment this to use your local server instead of the main one (useful for testing)
-
-
+const appID = 'HermesMessenger.Hermes.Desktop';
 app.setAppUserModelId(appID)
 
+var mainWindow;
+var HermesURL = 'https://hermesmessenger.duckdns.org';
+// var HermesURL = 'http://localhost:8080'; // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.
+
 if (lock) {
-  app.on('second-instance', function() {
+  app.on('second-instance', function () {
     if (mainWindow) {
       if (mainWindow.isMinimized()) mainWindow.restore();
       mainWindow.focus();
@@ -23,21 +27,29 @@ app.on('ready', function () {
     minWidth: 800, minHeight: 600,
 
     title: 'Hermes Desktop',
-    icon: 'icons/icon.png',
-    show: false, 
+    icon: 'build/icon.png',
+    show: false,
+    'Content-Security-Policy': 'script-src self https://hermesmessenger.duckdns.org/',
 
     webPreferences: {
       nodeIntegration: false,
     }
   });
 
-  mainWindow.loadURL(HermesURL);
-  mainWindow.maximize();
-  mainWindow.show();
+  
+  (async () => {
+    if (await isOnline() === true) {
+      mainWindow.loadURL(HermesURL);
+    } else {
+      mainWindow.loadFile('web/noInternet.html')
+    }
+    mainWindow.maximize();
+    mainWindow.show();
+  })();
 
   mainWindow.on('closed', function () {
     //mainWindow.close();
-    app.quit();
+    app.quit(); // TODO: Remove this when we add a backgroud service so app doesn't close. 
   });
 });
 

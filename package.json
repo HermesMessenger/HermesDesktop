@@ -3,18 +3,20 @@
   "version": "1.0.0",
   "description": "Desktop client version of the Hermes Messenger",
   "main": "main.js",
-  "dependencies": {},
+  "dependencies": {
+    "electron-settings": "^3.2.0",
+    "is-online": "^8.0.0",
+    "request": "^2.88.0"
+  },
   "devDependencies": {
     "electron": "^3.0.7",
     "electron-builder": "^20.38.2"
   },
   "scripts": {
     "start": "electron .",
-
     "build-win": "electron-builder --win",
     "build-macos": "electron-builder --mac",
     "build-linux": "electron-builder --linux",
-
     "build-all": "electron-builder -wml",
     "build-winlinux": "electron-builder -wl"
   },
