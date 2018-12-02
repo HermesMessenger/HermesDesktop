@@ -27,7 +27,7 @@ app.on('ready', () => {
         minWidth: 800, minHeight: 600,
 
         title: 'Hermes Desktop',
-        icon: 'build/icon.png',
+        icon: './build/icon.png',
         show: false,
 
         'Content-Security-Policy': 'script-src self https://hermesmessenger.duckdns.org/',
@@ -36,7 +36,7 @@ app.on('ready', () => {
         }
     });
 
-    tray = new Tray('build/icon.png'); // Background service 
+    tray = new Tray('./build/icon.png'); // Background service 
     tray.on('click', () => mainWindow.show());
     tray.setContextMenu(Menu.buildFromTemplate([
         { label: 'Hermes Messenger', enabled: false }, // Title for the context menu
@@ -47,7 +47,7 @@ app.on('ready', () => {
         } }
     ]));
 
-    mainWindow.loadFile('web/loading.html');
+    mainWindow.loadFile('./web/loading.html');
     mainWindow.maximize();
     mainWindow.show();
 
@@ -57,9 +57,9 @@ app.on('ready', () => {
             if (uuid) {
                 mainWindow.loadURL(HermesURL + '/setCookie/' + uuid);
             } else {
-                mainWindow.loadFile(HermesURL);
+                mainWindow.loadURL(HermesURL);
             }
-        } else mainWindow.loadFile('web/noInternet.html');
+        } else mainWindow.loadFile('./web/noInternet.html');
     })();
 
     mainWindow.on('close', (event) => {
