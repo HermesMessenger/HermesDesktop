@@ -36,7 +36,13 @@ app.on('ready', () => {
         }
     });
 
-    tray = new Tray('./build/icon.png'); // Background service 
+    let imagePath = './build/icon.png';
+    if (process.platform === 'darwin'){
+        imagePath = './build/Icon_osxTemplate.png'
+    }
+        
+
+    tray = new Tray(imagePath); // Background service 
     tray.on('click', () => mainWindow.show());
     tray.setContextMenu(Menu.buildFromTemplate([
         { label: 'Hermes Messenger', enabled: false }, // Title for the context menu
