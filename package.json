@@ -17,7 +17,7 @@
     "build-win": "electron-builder --win",
     "build-macos": "electron-builder --mac",
     "build-linux": "electron-builder --linux",
-    "build-all": "electron-builder -wml",
+    "build-all": "electron-builder -wml --publish always",
     "build-winlinux": "electron-builder -wl"
   },
   "build": {
@@ -64,7 +64,7 @@
     "linux": {
       "target": [
         {
-          "target": "AppImage",
+          "target": "AppImage", 
           "arch": [
             "x64",
             "ia32",

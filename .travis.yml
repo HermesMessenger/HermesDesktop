@@ -19,9 +19,3 @@ cache:
 
 script:
   - npm run build-all
-
-deploy:
-  provider: releases
-  file: "dist/*"
-  skip_cleanup: true
-  draft: true
