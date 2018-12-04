@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Welcome to Hermes</title>
+
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/main.js"></script>
+</head>
+
+<body>
+	<header class="cd-header">
+		<div id="cd-logo"><img src="img/cd-logo.svg" alt="Logo"></div>
+		<div id="cd-action"><a href="javascript: window.sendComplete();" class="btn">Go to the app</a></div>
+	</header>
+
+	<main class="cd-main-content">
+		<div class="cd-product-intro">
+			<h1>Welcome to Hermes</h1>
+			<p>Click on the Start button to view an introduction to the app.</p>
+			<div class="cd-triggers"> 
+				<a href="javascript: window.sendComplete();" class="btn">Go to the app</a>
+				<a href="#cd-product-tour" class="btn salmon" data-type="cd-tour">Start Intro</a>
+			</div>
+		</div>
+
+		<div id="cd-product-tour">
+			<ul style="list-style: none;">
+				<li class="cd-single-item cd-active">
+					<div class="cd-caption">
+						<h2>What a great feature</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus praesentium, quis ab iusto possimus quaerat perspiciatis voluptas obcaecati ipsam autem.	
+						</p>
+					</div>
+					<div class="cd-image-container">
+						<div>
+							<div class="cd-phone-frame"></div>
+							<div class="cd-image-wrapper">
+								<img src="img/screen-1.png" alt="Screen Preview 1">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="cd-single-item cd-not-visible cd-move-right">
+					<div class="cd-caption">
+						<h2>This one is even better</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus praesentium, quis ab iusto possimus quaerat perspiciatis voluptas obcaecati ipsam autem.	
+						</p>
+					</div>
+					<div class="cd-image-container">
+						<div>
+							<div class="cd-phone-frame"></div>
+							<div class="cd-image-wrapper">
+								<img src="img/screen-2.png" alt="Screen Preview 2">
+							</div>
+						</div>
+					</div>
+				</li>
+				<li class="cd-single-item cd-not-visible cd-move-right">
+					<div class="cd-caption">
+						<h2>Feature number 3</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus praesentium, quis ab iusto possimus quaerat perspiciatis voluptas obcaecati ipsam autem.	
+						</p>
+					</div>
+					<div class="cd-image-container">
+						<div>
+							<div class="cd-phone-frame"></div>
+							<div class="cd-image-wrapper">
+								<img src="img/screen-3.png" alt="Screen Preview 3">
+							</div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+
+		<div class="cd-slider-nav">
+			<a class="cd-prev" href="#0">Previous</a>
+			<a class="cd-next" href="#0">Next</a>
+		</div>
+
+	</main>
+</body>
+</html>
