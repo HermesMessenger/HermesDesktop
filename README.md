@@ -13,7 +13,8 @@ Download the corresponding installer and run it, just like if you were installin
 
 ### Linux
 
-The file in the releases page is an executable, so you just have to download it, mark it as executable and run it. No installation is necessary, and all dependencies are packed into the file. 
+The file in the releases page is an executable, so you just have to download it, mark it as executable and run it.   
+No installation is necessary, and all dependencies are packed into the file. 
 
 ---
 
@@ -26,12 +27,19 @@ This will open a new window with the program.
 
 ## Build
 
-We use Travis CI to automatically compile the app after each commit, but if you want you can do this yourself. 
+We have Travis CI set up to automatically compile the app after each commit, but if you want you can do this yourself. 
 
-To create binaries of the app, use:
+To create binaries for one operating system, use:
+```bash
+npm run build-win
+npm run build-macos
+npm run build-linux  
+```
+
+To create binaries for all operating systems, use:
 ```bash
 npm run build-all
 ```
-This creates prebuilt binaries in the `dist/` folder for all operating systems (Windows, Mac OS and Linux). 
+The newly created binaries will be inside the `dist/` folder. 
 
-**NOTE:** Mac OS binaries can only be built on that operating system. If you don't have a device running it, you can use `npm run build-winlinux` to skip creating the Mac OS builds and only create them for Windows and Linux.
+**NOTE:** Mac OS binaries can only be built on that operating system, and `npm run build-all` will error out if running on a different OS. You can use `npm run build-winlinux` to skip the Mac OS builds and only create them for Windows and Linux.
