@@ -1,9 +1,8 @@
-const { app, BrowserWindow, nativeImage, ipcMain, Tray, Menu, systemPreferences} = require('electron');
+const { app, BrowserWindow, ipcMain, Tray, Menu, systemPreferences} = require('electron');
 const settings = require('electron-settings');
 const isOnline = require('is-online');
 const path = require('path')
 
-const icon = path.join(__dirname, 'icons/Icon.png');
 const lock = app.requestSingleInstanceLock();
 app.setAppUserModelId('HermesMessenger.Hermes.Desktop')
 
@@ -12,6 +11,11 @@ var mainWindow;
 var HermesURL = 'https://hermesmessenger.duckdns.org';
 // var HermesURL = 'http://localhost:8080'; // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.
 
+var icon = path.join(__dirname, 'icons/Icon.png');
+
+if (process.platform === 'darwin'){
+  icon = path.join(__dirname, 'icons/Icon_osxTemplate.png');
+};
 
 if (lock) {
   app.on('second-instance', () => {
