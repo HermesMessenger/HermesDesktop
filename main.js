@@ -10,7 +10,7 @@ app.setAppUserModelId('HermesMessenger.Hermes.Desktop')
 var reallyQuit = false;
 var mainWindow;
 var HermesURL = 'https://hermesmessenger.duckdns.org';
-// var HermesURL = 'http://localhost:8080'; // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.
+var HermesURL = 'http://localhost:8080'; // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.
 
 
 if (lock) {

@@ -15,7 +15,7 @@
   "scripts": {
     "start": "electron .",
     "build-win": "electron-builder --win",
-    "build-macos": "electron-builder --mac",
+    "build-osx": "electron-builder --mac",
     "build-linux": "electron-builder --linux",
     "build-all": "electron-builder -wml --publish always",
     "build-winlinux": "electron-builder -wl"
