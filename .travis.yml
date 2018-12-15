@@ -18,4 +18,4 @@ cache:
     - $HOME/.cache/electron-builder
 
 script:
-  - npm run build-all
+  - npm run build-ci

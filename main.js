@@ -50,6 +50,7 @@ app.on('ready', () => {
     tray.on('click', () => mainWindow.show());
     tray.setContextMenu(Menu.buildFromTemplate([
       { label: 'Hermes Messenger', enabled: false }, // Title for the context menu
+      {type: 'separator'},
       { label: 'Show App', click: () => mainWindow.show() },
       { label: 'Close App', click: () => {
           reallyQuit = true;
