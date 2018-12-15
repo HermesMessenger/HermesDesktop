@@ -15,14 +15,19 @@
   "scripts": {
     "start": "electron .",
     "build-win": "electron-builder --win",
-    "build-macos": "electron-builder --mac",
+    "build-osx": "electron-builder --mac",
     "build-linux": "electron-builder --linux",
-    "build-all": "electron-builder -wml --publish always",
-    "build-winlinux": "electron-builder -wl"
+    "build-all": "electron-builder -wml",
+    "build-winlinux": "electron-builder -wl",
+    "build-ci": "electron-builder -wml --publish always"
   },
   "build": {
     "appId": "HermesMessenger.Hermes.Desktop",
     "productName": "Hermes Messenger",
+    "publish": {
+      "provider": "github",
+      "publishAutoUpdate": false
+    },
     "win": {
       "target": [
         {
@@ -32,7 +37,8 @@
             "x64"
           ]
         }
-      ]
+      ],
+      "artifactName": "HermesMessenger-Windows.exe"
     },
     "nsis": {
       "oneClick": false,
@@ -41,7 +47,9 @@
     },
     "mac": {
       "category": "public.app-category.social-networking",
-      "target": "dmg"
+      "target": "dmg",
+      "darkModeSupport": true,
+      "artifactName": "HermesMessenger-MacOS.dmg"
     },
     "dmg": {
       "icon": "build/icon.icns",
@@ -62,6 +70,7 @@
       ]
     },
     "linux": {
+      "artifactName": "HermesMessenger-Linux-${arch}.AppImage",
       "target": [
         {
           "target": "AppImage",
