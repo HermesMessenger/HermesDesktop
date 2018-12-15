@@ -41,7 +41,8 @@
     },
     "mac": {
       "category": "public.app-category.social-networking",
-      "target": "dmg"
+      "target": "dmg",
+      "darkModeSupport": true
     },
     "dmg": {
       "icon": "build/icon.icns",

@@ -1,4 +1,4 @@
-const { app, BrowserWindow, nativeImage, ipcMain, Tray, Menu } = require('electron');
+const { app, BrowserWindow, nativeImage, ipcMain, Tray, Menu, systemPreferences} = require('electron');
 const settings = require('electron-settings');
 const isOnline = require('is-online');
 const path = require('path')
@@ -60,7 +60,11 @@ app.on('ready', () => {
     (async () => {
       if (await isOnline()) {
         uuid = settings.get('uuid');
-        mainWindow.loadURL(HermesURL + '/setCookie/' + uuid); // API call that saves cookie on the client. It redirects to /chat if the UUID is valid and to /login if it isn't.
+        let theme = 'light';
+        if (process.platform == 'darwin') {            
+            theme = systemPreferences.isDarkMode() ? 'dark' : 'light';
+        }
+        mainWindow.loadURL(HermesURL + '/setCookie/' + uuid + '/' + theme); // API call that saves cookie on the client. It redirects to /chat if the UUID is valid and to /login if it isn't.
       } else mainWindow.loadFile('./web/noInternet.html');
     })();
 
