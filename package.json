@@ -5,8 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "electron-settings": "^3.2.0",
-    "is-online": "^8.0.0",
-    "jquery": "^3.3.1"
+    "is-online": "^8.0.0"
   },
   "devDependencies": {
     "electron": "^3.0.7",
@@ -14,11 +13,12 @@
   },
   "scripts": {
     "start": "electron .",
+    "build": "electron-builder",
     "build-win": "electron-builder --win",
     "build-osx": "electron-builder --mac",
     "build-linux": "electron-builder --linux",
-    "build-all": "electron-builder -wml",
     "build-winlinux": "electron-builder -wl",
+    "build-all": "electron-builder -wml",
     "build-ci": "electron-builder -wml --publish always"
   },
   "build": {
