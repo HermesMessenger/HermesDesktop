@@ -12,9 +12,8 @@ app.setAppUserModelId('HermesMessenger.Hermes.Desktop')
 
 var reallyQuit = false
 var mainWindow
-var HermesURL = 'http://hermesmessenger.duckdns.org'
-// var HermesURL = 'http://hermesmessenger-testing.duckdns.org' // Testing server
-// var HermesURL = 'http://localhost:8080' // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.
+
+var HermesURL
 
 var icon = path.join(__dirname, 'icons/Icon.png')
 if (process.platform === 'darwin') {
@@ -31,6 +30,12 @@ app.on('ready', () => {
         mainWindow.maximize()
         mainWindow.show()
             
+        var HermesURL = 'http://hermesmessenger.duckdns.org'
+        if (settings.get('testing') == true) {
+            HermesURL = 'http://hermesmessenger-testing.duckdns.org' // Testing server
+        }
+        // var HermesURL = 'http://localhost:8080' // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.        
+
         isOnline().then(online => {
             if (online) { // Device is connected to the Internet
                 request.get(HermesURL, (err, res, body) => { 
