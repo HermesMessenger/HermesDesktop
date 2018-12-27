@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <title>New Update</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <div class="login-page">
+        <h1>New update available</h1>
+        <p>You are using version <span id='current'>1.0.0</span>, and<br>version <span id='latest'>1.0.1</span> has been released. </p>
+        <div class="wrapper">
+          <button class="download" onclick="location.href = 'https://github.com/HermesMessenger/HermesDesktop/releases';">download</button>
+          <button class="close" onclick="window.close();">close</button>
+        </div>
+    </div>
+    <script>
+      document.getElementById('current').innerHTML = window.get('current');
+      document.getElementById('latest').innerHTML = window.get('latest');
+    </script>
+  </body>
+</html>
