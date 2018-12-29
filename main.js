@@ -10,9 +10,6 @@ var newVersion
 
 app.setAppUserModelId('HermesMessenger.Hermes.Desktop')
 
-
-var use_dark_mode = false
-//use_dark_mode = true; // Uncomment this to always use dark mode (useful for testing), but remember to comment it back before pushing.
 var reallyQuit = false
 var mainWindow
 
@@ -166,6 +163,28 @@ const trayMenu = [
       }
     }
 ]
+
+const AppMenu = [{
+    label: "Application",
+    submenu: [
+        { label: "About Hermes Desktop", selector: "orderFrontStandardAboutPanel:" },
+        { type: "separator" },
+        { label: "Quit", accelerator: "Command+Q", click: () => app.quit() }
+    ]}, {
+    label: "Edit",
+    submenu: [
+        { label: "Undo", accelerator: "CmdOrCtrl+Z", selector: "undo:" },
+        { label: "Redo", accelerator: "Shift+CmdOrCtrl+Z", selector: "redo:" },
+        { type: "separator" },
+        { label: "Cut", accelerator: "CmdOrCtrl+X", selector: "cut:" },
+        { label: "Copy", accelerator: "CmdOrCtrl+C", selector: "copy:" },
+        { label: "Paste", accelerator: "CmdOrCtrl+V", selector: "paste:" },
+        { label: "Select All", accelerator: "CmdOrCtrl+A", selector: "selectAll:" }
+    ]}
+];
+
+Menu.setApplicationMenu(Menu.buildFromTemplate(AppMenu));
+
 
 /*
  ___ ____   ____ 
