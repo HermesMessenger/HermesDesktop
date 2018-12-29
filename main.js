@@ -9,7 +9,9 @@ app.setAppUserModelId('HermesMessenger.Hermes.Desktop')
 var reallyQuit = false;
 var mainWindow;
 var HermesURL = 'https://hermesmessenger.duckdns.org';
-// var HermesURL = 'http://localhost:8080'; // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.
+//HermesURL = 'http://localhost:8080'; // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.
+var use_dark_mode = false;
+//use_dark_mode = true; // Uncomment this to always use dark mode (useful for testing), but remember to comment it back before pushing.
 
 var icon = path.join(__dirname, 'icons/Icon.png');
 
@@ -67,9 +69,14 @@ app.on('ready', () => {
       if (await isOnline()) {
         uuid = settings.get('uuid');
         let theme = 'light';
-        if (process.platform == 'darwin') {            
-            theme = systemPreferences.isDarkMode() ? 'dark' : 'light';
+        if(use_dark_mode){
+            theme = 'dark';
+        }else{
+            if (process.platform == 'darwin') {            
+                theme = systemPreferences.isDarkMode() ? 'dark' : 'light';
+            }
         }
+        console.log('Theme:', theme);
         mainWindow.loadURL(HermesURL + '/setCookie/' + uuid + '/' + theme); // API call that saves cookie on the client. It redirects to /chat if the UUID is valid and to /login if it isn't.
       } else mainWindow.loadFile('./web/noInternet.html');
     })();
