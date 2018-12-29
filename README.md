@@ -29,10 +29,15 @@ This will open a new window with the program.
 
 We have Travis CI set up to automatically compile the app after each commit, but if you want you can do this yourself. 
 
-To create binaries for one operating system, use:
+To create binaries for your operating system, use:
+```bash
+npm run build
+```
+
+To create binaries for a specific operating system, use:
 ```bash
 npm run build-win
-npm run build-macos
+npm run build-osx
 npm run build-linux  
 ```
 
