@@ -29,7 +29,7 @@ app.on('ready', () => {
         mainWindow.loadFile('./web/loading.html')
         mainWindow.maximize()
         mainWindow.show()
-            
+        
         var HermesURL = 'http://hermesmessenger.duckdns.org'
         if (settings.get('testing') == true) {
             HermesURL = 'http://hermesmessenger-testing.duckdns.org' // Testing server
@@ -78,6 +78,11 @@ app.on('ready', () => {
 
             } else mainWindow.loadFile('./web/noInternet.html')
         }).catch(err => mainWindow.loadFile('./web/noInternet.html'))
+
+        mainWindow.webContents.on('new-window', (event, url) => { // Open links in default browser
+            event.preventDefault()
+            shell.openExternal(url)
+        })
 
         mainWindow.on('close', (event) => {
             if (!reallyQuit) {
@@ -183,8 +188,9 @@ const AppMenu = [{
     ]}
 ];
 
-Menu.setApplicationMenu(Menu.buildFromTemplate(AppMenu));
-
+if (process.platform === 'darwin') {
+    Menu.setApplicationMenu(Menu.buildFromTemplate(AppMenu));
+}
 
 /*
  ___ ____   ____ 
