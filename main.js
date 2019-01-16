@@ -5,7 +5,7 @@ const path = require('path')
 const request = require('request')
 const semver = require('semver')
 
-const currentVersion = process.env.npm_package_version
+const currentVersion = require('./package.json').version
 var newVersion
 
 app.setAppUserModelId('HermesMessenger.Hermes.Desktop')

@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "electron": "^4.0.1",
-    "electron-builder": "^20.38.4"
+    "electron-builder": "^20.38.5"
   },
   "scripts": {
     "start": "electron .",
@@ -72,10 +72,26 @@
       ]
     },
     "linux": {
-      "artifactName": "HermesMessenger-Linux-${arch}.AppImage",
+      "artifactName": "HermesMessenger-Linux-${arch}.${ext}",
       "target": [
         {
           "target": "AppImage",
+          "arch": [
+            "x64",
+            "ia32",
+            "armv7l",
+            "arm64"
+          ]
+        },
+        {
+          "target": "apk",
+          "arch": [
+            "armv7l",
+            "arm64"
+          ]
+        },
+        {
+          "target": "deb",
           "arch": [
             "x64",
             "ia32",
