@@ -30,9 +30,9 @@ app.on('ready', () => {
         mainWindow.maximize()
         mainWindow.show()
         
-        var HermesURL = 'http://hermesmessenger.duckdns.org'
+        var HermesURL = 'http://hermesmessenger.chat'
         if (settings.get('testing') == true) {
-            HermesURL = 'http://hermesmessenger-testing.duckdns.org' // Testing server
+            HermesURL = 'http://testing.hermesmessenger.chat' // Testing server
         }
         // var HermesURL = 'http://localhost:8080' // Uncomment this to use your local server instead of the main one (useful for testing), but remember to comment it back before pushing.        
 
