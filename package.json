@@ -1,6 +1,6 @@
 {
   "name": "hermes",
-  "version": "v1.0.0-10",
+  "version": "v1.0.0-11",
   "description": "Desktop client version of the Hermes Messenger",
   "main": "main.js",
   "dependencies": {
